@@ -1,0 +1,27 @@
+<div class ="container">
+<div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
+    <form class = " formContainer"  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+        <img src="../assets/wanderer.png" alt="">
+       <div class="block">
+        <label>
+            Email :
+         </label>
+         <div>
+             <i class="fa fa-envelope "></i>  
+            <input class="form-control " [ngClass]='stateEmail' type="email" ngModel name="email" email required >
+        </div>
+        <div class="error">{{ errorEmail}}</div> 
+         </div> 
+         <div  class="block">  
+           <label>Password :</label>
+           <div class="inputContainer"> 
+            <i class="fa fa-key"></i>  
+           <input  [ngClass]='statePassword' class="form-control" type="password" ngModel name="password" required >
+          </div>
+          <div class="error">{{errorPassword}}</div>
+          </div>
+        <a routerLink="/resetPassword"  >Forgot Password ?</a>
+        <button type="submit" class="btn btn-primary" >Sign In</button>
+    </form>
+</div>
+
