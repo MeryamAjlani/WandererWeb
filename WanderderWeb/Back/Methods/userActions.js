@@ -52,7 +52,7 @@ module.exports = {
                     await User.findOneAndUpdate({userId: user._id}, req.body,{
                         new: true
                     });
-                    res.send({'status': true})
+                    res.send()
                 } else {
                     const error =createError(404,'Profile not found');
                     next(error);

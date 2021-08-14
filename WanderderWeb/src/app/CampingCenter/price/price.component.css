@@ -1,0 +1,57 @@
+.container{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+th{
+    color: aliceblue;
+    
+}
+td{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: azure;
+}
+i{
+    color: #e7accf;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+  }
+  button{
+      background-color:#e4648f;
+      border: #e4648f;
+  }
+  mat-expansion-panel{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    background-color:#352741;
+    border: #e7accf 1px solid;
+    width: 80%;
+  }
+
+p{
+    color:#f3ddeade ;
+}
+#name{
+    font-size: 22px;
+}
+mat-panel-title{
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+}
+.icon{
+    display: flex;
+    justify-content:space-around ;
+    align-items: center;
+}

@@ -1,0 +1,15 @@
+.picsum-img-wrapper{
+
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+img{
+object-fit:contain;
+width: 70%;
+height: 50%;
+}
+.container {
+margin-bottom: 100px;
+}
+

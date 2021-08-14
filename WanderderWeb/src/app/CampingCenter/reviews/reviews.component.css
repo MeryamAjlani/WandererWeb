@@ -1,0 +1,58 @@
+.rounded-circle{
+    border-radius:50%;
+    width:80px;
+    height:80px;
+    align-self: flex-start;
+    margin-top: 2%;
+ }
+ .label{
+    color: #e7accf;
+    font-size:25px;
+    font-weight: bold;
+ }
+ .user{
+     display: flex;
+     align-items: center;
+
+ }
+ i{
+     color: #e7accf;
+     font-size:20px;
+  
+     padding-right: 2%;
+ }
+ .review{
+     color: aliceblue;
+     opacity: 0.8;
+ }
+ .content {
+     padding-top: 2%;
+     padding-left: 2%;
+ }
+ .container{
+     width: 70%;
+     background-color:#352741 ;
+     border-radius: 20px;
+     padding-top: 1%;
+     padding-bottom: 2%;
+     border: #e7accf 1px solid;
+     margin-top: 2%;
+     margin-bottom: 2%;
+ }
+ .reviews{
+     padding-top: 2%;
+ }
+ ngb-rating{
+     color: #e4648f;
+     font-size: 30px;
+     margin-top: -20px;
+     padding-bottom: 20px;
+    
+ }
+ .date{
+     display: flex;
+     
+     color: aliceblue;
+     margin-bottom: 1%;
+     margin-top: -1%;
+ }

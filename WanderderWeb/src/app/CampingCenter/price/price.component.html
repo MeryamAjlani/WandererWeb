@@ -1,1 +1,22 @@
-<p>price works!</p>
+<div class="container">
+   
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+       <p id="name">Item Name</p> <p> item description</p>
+         <p>Item Price DT</p>
+        <div class="icon"> <i class="fa fa-pencil fa-2x"></i>
+          <i class="fa fa-trash fa-2x" (click)="deleteItem()"></i>
+        </div>
+          </mat-panel-title>
+          <mat-panel-description>
+           <div class="row1"> </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+            
+        
+        <mat-action-row>
+          <button mat-button class="btn btn-primary">Update</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+</div>

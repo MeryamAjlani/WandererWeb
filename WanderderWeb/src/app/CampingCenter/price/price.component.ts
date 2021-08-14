@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./price.component.css']
 })
 export class PriceComponent implements OnInit {
-
-  constructor() { }
+  panelOpenState:boolean;
+  show:boolean=false;
+  constructor() {
+    this.panelOpenState=false
+   }
 
   ngOnInit(): void {
   }
-
+  toggle():void{
+    this.show=!this.show
+  }
+  deleteItem():void{}
 }

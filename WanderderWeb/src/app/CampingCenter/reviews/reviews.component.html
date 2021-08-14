@@ -1,0 +1,20 @@
+<div class="reviews">
+<div class="container"  *ngFor="let review of reviews" >
+    <div class="user">
+    <img class="rounded-circle" src="https://1.bp.blogspot.com/-ltOzGaxakwM/XqIc_Zik7EI/AAAAAAAAATg/kTJNUqS8Rs0NoABNeq_tlFq6vaKUIGOnQCLcBGAsYHQ/s1600/irelia.png" >
+    <div class="content">
+        <p class="label">Maryem Caramel</p>
+        <div class="date"><i class="fa fa-calendar"></i><p> {{review.date}}</p></div>
+    
+        <ngb-rating [rate]="review.rating"></ngb-rating>
+        <div>
+           
+            <p class= "review"> <i class="fa fa-quote-left"></i>{{review.content}} <i class="fa fa-quote-right" style="padding-left:2%"></i></p>
+          
+        </div>
+    </div>
+   
+    </div>
+   
+</div>
+</div>

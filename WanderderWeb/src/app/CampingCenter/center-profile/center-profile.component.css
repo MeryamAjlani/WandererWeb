@@ -1,0 +1,48 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.cover{
+    padding-left: 50px;
+    width: 90%;
+    height:300px;
+    background-image:linear-gradient(to top, rgba(1, 4, 19, 0.829),rgba(170, 132, 161, 0)), url('./../../../assets/sample.jpg');
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    
+}
+.outterContainer{
+    background-repeat: no-repeat;
+    
+    background-image: url('./../../../assets/Profile.png') ;
+
+}
+
+#center_Name{
+    font-size: 40px;
+    color: aliceblue;
+}
+#city{
+    margin-top: -20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: start;
+}
+#city i{
+    color: #e7accf;
+width: 50px;  
+margin-right: -10%; 
+}
+
+#city p{
+font-size: 30px;
+font-weight: 100;
+color: #e7accf;
+}
+.content{
+    width: 100%;
+}

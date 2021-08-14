@@ -11,10 +11,17 @@ import { ResetRequestFormComponent } from './Authentification/reset-request-form
 import { ResetPasswordComponent } from './Authentification/reset-password/reset-password.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CenterProfileComponent } from './CampingCenter/center-profile/center-profile.component';
-import { SideBarComponent } from './CampingCenter/center-profile/side-bar/side-bar.component';
+import { SideBarComponent } from './CampingCenter/side-bar/side-bar.component';
 import { CenterDetailsComponent } from './CampingCenter/center-details/center-details.component';
 import { ReservationComponent } from './CampingCenter/reservation/reservation.component';
 import { PriceComponent } from './CampingCenter/price/price.component';
+import { CodeInputComponent } from './Authentification/code-input/code-input.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselComponent } from './CampingCenter/center-profile/carousel/carousel.component';
+import { ReviewsComponent } from './CampingCenter/reviews/reviews.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+
 
 @NgModule({
   declarations: [
@@ -28,11 +35,17 @@ import { PriceComponent } from './CampingCenter/price/price.component';
     CenterDetailsComponent,
     ReservationComponent,
     PriceComponent,
+    CodeInputComponent,
+    CarouselComponent,
+    ReviewsComponent,
+
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    NgbModule,
+    MatExpansionModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -40,18 +53,25 @@ import { PriceComponent } from './CampingCenter/price/price.component';
       { path: '', pathMatch: 'full', redirectTo: '/login' },
       { path: 'login', component: LoginFormComponent },
       { path: 'resetPassword', component: ResetRequestFormComponent},
+      { path: 'confirmCode', component: CodeInputComponent},
+      { path: 'newPassword', component: ResetPasswordComponent},
+
       { path: 'centerProfile', component: CenterProfileComponent, children:[
         {
-          path:'centerDetails', component:CenterDetailsComponent
+          path:'details', component:CenterDetailsComponent
+        },
+        {
+          path:'reviews', component:ReviewsComponent
         },
        { path:'reservations', component:ReservationComponent},
        {
          path:'prices',component:PriceComponent
        },
-       { path: '', pathMatch: 'full', redirectTo: '/centerDetails' }
+       { path: '', pathMatch: 'full', redirectTo: 'details' }
       ]
     }
-    ])
+    ]),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

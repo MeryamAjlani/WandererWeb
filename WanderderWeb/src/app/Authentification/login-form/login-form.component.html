@@ -1,3 +1,4 @@
+<div class="background">
 <div class ="container">
 <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
     <form class = " formContainer"  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
@@ -8,7 +9,10 @@
          </label>
          <div>
              <i class="fa fa-envelope "></i>  
-            <input class="form-control " [ngClass]='stateEmail' type="email" ngModel name="email" email required >
+            <input class="form-control " type="email" ngModel name="email" email required 
+            #email='ngModel'
+            [ngClass]='state[0]'
+            >
         </div>
         <div class="error">{{ errorEmail}}</div> 
          </div> 
@@ -16,12 +20,13 @@
            <label>Password :</label>
            <div class="inputContainer"> 
             <i class="fa fa-key"></i>  
-           <input  [ngClass]='statePassword' class="form-control" type="password" ngModel name="password" required >
+           <input   class="form-control" type="password" ngModel name="password" required [ngClass]='state[1]'>
           </div>
           <div class="error">{{errorPassword}}</div>
           </div>
         <a routerLink="/resetPassword"  >Forgot Password ?</a>
-        <button type="submit" class="btn btn-primary" >Sign In</button>
+        <button type="submit" class="btn btn-primary" >Login</button>
     </form>
 </div>
 
+</div>

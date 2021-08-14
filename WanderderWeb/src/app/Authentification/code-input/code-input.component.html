@@ -1,24 +1,24 @@
-
-<div class="backgound">
+<div class="background">
     <div class ="container">
         <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
         <form class = " formContainer"  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading"  >
             <img src="../assets/wanderer.png" alt="">
            <div class="block">
             <label>
-                Email :
+               Reset Code :
              </label>
              <div>
-                 <i class="fa fa-envelope "></i>  
-                <input class="form-control " type="email" ngModel name="email" email required ngModel
-                #email='ngModel'
+                 <i class="fa fa-key "></i>  
+                <input class="form-control " type="number" ngModel name="code"  required ngModel
+                #code='ngModel'
                 [ngClass]="state"
                 >
             </div>
-            <div class="error">{{ errorEmail}}</div> 
+            <div class="error">{{ errorCode}}</div> 
              </div> 
+             
             <a routerLink="/login"  >Back To Sign In</a>
-            <button type="submit" class="btn btn-primary" >Send Code</button>
+            <button type="submit" class="btn btn-primary" >Reset Password</button>
         </form>
     </div>
 </div>

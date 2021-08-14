@@ -1,1 +1,116 @@
-<p>center-details works!</p>
+<div class="detailForm">
+ 
+  <div class =" ">
+    <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
+        <form class = " "  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading" autocomplete="off">
+          <div class="title">
+            <p>Center Information :</p>
+          </div>
+        <div class="rows row"> 
+            <div class="block col-md-4">
+          <label>
+           Center Name :
+           </label>
+           <div>
+              <input class="form-control " type="email" ngModel name="email" email required 
+              #email='ngModel'
+              >
+          </div>
+          <div class="error"></div> 
+           </div> 
+           <div  class="block col-md-4">  
+             <label>Status :</label>
+
+             <input   class="form-control" type="text" ngModel name="password" required >
+            
+            <div class="error"></div>
+            </div>
+          </div>
+          <div  class="block row ">  
+            <label>Description :</label>
+            <div class="inputContainer col-md-12"> 
+            
+            <textarea   class="form-control" type="text" ngModel name="password" required ></textarea>
+           </div>
+           <div class="error"></div>
+           </div>
+        
+           <div class="title">
+            <p>Center Location :</p>
+          </div> 
+              <div class="row">
+              <div  class="block  col-md-4">  
+                <label>Address :</label>
+                <div class="inputContainer"> 
+                
+                <input   class="form-control" type="text" ngModel name="password" required >
+               </div>
+               <div class="error"></div>
+               </div>
+              
+               <div  class="block  col-md-4">  
+                <label>City :</label>
+                <div class="inputContainer"> 
+                
+                <input   class="form-control" type="text" ngModel name="password" required >
+               </div>
+               <div class="error"></div>
+               </div>
+               </div>
+               <div class="row">
+               <div  class="block  col-md-4">  
+                <label>Coordinates (long) :</label>
+                <div class="inputContainer"> 
+                
+                <input   class="form-control" type="text" ngModel name="password" required >
+               </div>
+               <div class="error"></div>
+               </div>
+               <div  class=" block col-md-4">  
+                <label>Coordinates (lat) :</label>
+                <div class="inputContainer"> 
+                
+                <input   class="form-control" type="text" ngModel name="password" required >
+               </div>
+               <div class="error"></div>
+               </div>
+               </div>
+               <div class="title">
+                <p>Credentials :</p>
+              </div> 
+                  <div class="row">
+                  <div  class="block  col-md-4">  
+                    <label>Email :</label>
+                    <div class="inputContainer"> 
+                    
+                    <input  class="form-control" type="text" ngModel name="password" required >
+                   </div>
+                   <div class="error"></div>
+                   </div>
+                  
+                   <div class="row">
+                    <div  class="block  col-md-4">  
+                     <label>Password :</label>
+                     <div class="inputContainer"> 
+                     
+                     <input   class="form-control" type="text" ngModel name="password" required >
+                    </div>
+                    <div class="error"></div>
+                    </div>
+                    <div  class=" block col-md-4">  
+                     <label>Confirm Password :</label>
+                     <div class="inputContainer"> 
+                     
+                     <input   class="form-control" type="text" ngModel name="password" required >
+                    </div>
+                    <div class="error"></div>
+                    </div>
+                    </div>
+                   </div>
+             <button type="submit" class="btn btn-primary"> Update Information</button>
+            
+        </form>
+         
+        <app-carousel></app-carousel>
+    </div>
+</div>
