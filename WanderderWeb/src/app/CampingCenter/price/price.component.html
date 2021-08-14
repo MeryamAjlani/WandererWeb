@@ -1,22 +1,66 @@
 <div class="container">
    
-      <mat-expansion-panel hideToggle="true">
+      <mat-expansion-panel hideToggle="true" *ngFor="let item of priceItems" *ngIf="deleted">
         <mat-expansion-panel-header>
           <mat-panel-title>
-       <p id="name">Item Name</p> <p> item description</p>
-         <p>Item Price DT</p>
-        <div class="icon"> <i class="fa fa-pencil fa-2x"></i>
-          <i class="fa fa-trash fa-2x" (click)="deleteItem()"></i>
-        </div>
+       <p id="name">{{item.label}}</p> <p>{{item.description}}</p>
+         <p>{{item.price}} DT</p>
           </mat-panel-title>
           <mat-panel-description>
-           <div class="row1"> </div>
+           <div class="icon"><i class="fa fa-pencil fa-2x"></i>
+            <i class="fa fa-trash fa-2x" (click)="deleteItem(item.id)"></i> </div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-            
+        <form class = " formContainer"  #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm)" *ngIf="!isLoading" autocomplete="off">
+         <div class="block">
+          <label>
+            <i class="fa fa-tags"></i> Product Name :
+           </label>
+           <div>
+              <input  type="text" ngModel name="name" required 
+              #name='ngModel'
+              >
+          </div>
+          <div class="error"></div> 
+           </div> 
+           <div class="block">
+            <label>
+              <i class="fa fa-align-left"></i>Product Description :
+             </label>
+             <div>
+                <input type="text" ngModel name="name" required 
+                #name='ngModel'
+                >
+            </div>
+            <div class="error"></div> 
+             </div> 
+             <div class="block">
+              <label>
+                <i class="fa fa-money"></i>    Product Price :
+               </label>
+               <div>
+                  <input type="text" ngModel name="name" required 
+                  #name='ngModel'
+                  >
+              </div>
+              <div class="error"></div> 
+               </div>  
+                 <div class="block">
+              <label>
+                <i class="fa fa-stack-overflow"></i> In Stock :
+               </label>
+               <div>
+                  <input type="text" ngModel name="name" required 
+                  #name='ngModel'
+                  >
+              </div>
+              <div class="error"></div> 
+               </div> 
         
         <mat-action-row>
           <button mat-button class="btn btn-primary">Update</button>
         </mat-action-row>
+      </form>
+
       </mat-expansion-panel>
 </div>

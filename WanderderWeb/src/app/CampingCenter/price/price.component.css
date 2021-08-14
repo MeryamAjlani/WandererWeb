@@ -1,8 +1,10 @@
 .container{
     padding-top: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 70%;
+    align-items: center;
+    width: 65%;
 }
 th{
     color: aliceblue;
@@ -15,17 +17,20 @@ td{
     color: azure;
 }
 i{
-    color: #e7accf;
+    color:  #e4648f;
     font-size: 20px;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-right: 10px;
     padding-bottom: 10px;
 }
-input {
+input,input:focus {
+    border: transparent;
     border: 0;
+    width: 80%;
     outline: 0;
     background: transparent;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.801);
+    color: #f1edf0;
   }
   button{
       background-color:#e4648f;
@@ -51,7 +56,21 @@ mat-panel-title{
     align-items: center;
 }
 .icon{
+    padding-left: 60%;
     display: flex;
-    justify-content:space-around ;
+    justify-content:flex-end ;
     align-items: center;
+}
+.block{
+    padding-top: 20px;
+}
+label{
+    color: #e4648f;
+}
+.formContainer{
+padding-left:10%;
+}
+mat-expansion-panel{
+   margin-top: 2%;
+    margin-bottom: 2%;
 }

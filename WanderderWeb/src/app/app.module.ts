@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './CampingCenter/center-profile/carousel/carousel.component';
 import { ReviewsComponent } from './CampingCenter/reviews/reviews.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { PriceItemComponent } from './CampingCenter/price/price-item/price-item.component';
 
 
 
@@ -38,6 +39,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CodeInputComponent,
     CarouselComponent,
     ReviewsComponent,
+    PriceItemComponent,
 
     
   ],
