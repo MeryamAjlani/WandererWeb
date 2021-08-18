@@ -4,6 +4,7 @@ export class User{
     fullname: string;
     role:number;
     profile:string;
+ 
 
     constructor(email:string,password:string,fullname:string,role:number,profile:string){
         this.email=email;
@@ -11,5 +12,6 @@ export class User{
         this.fullname=fullname;
         this.role=role;
         this.profile=profile;
+        
     }
 }

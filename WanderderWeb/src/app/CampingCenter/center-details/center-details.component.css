@@ -73,3 +73,18 @@ button:hover{
     background-color: #5e2382;
     border: 1px solid #5e2382;
 }
+mat-slide-toggle{
+    display: flex;
+    flex-direction: column;
+}
+mat-slide-toggle p{
+    color: #e7accf;
+    padding-top: 12px;
+}
+input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched{
+    border: rgb(240, 240, 149) solid 2px;
+}
+.error{
+    color: yellow;
+    padding-bottom:  10px;
+}

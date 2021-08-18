@@ -12,10 +12,12 @@ export class PriceComponent implements OnInit {
   panelOpenState:boolean;
   show:boolean=false;
   isLoading:boolean;
+  isDeleted:boolean;
   priceItems:CenterPrice[];
   deletedItems:string[];
   updatedItems:CenterPrice[]
   constructor(private priceService:PriceItemsService) {
+    this.isDeleted=false
     this.panelOpenState=false
     this.isLoading=false
     this.priceItems=this.priceService.getItems()

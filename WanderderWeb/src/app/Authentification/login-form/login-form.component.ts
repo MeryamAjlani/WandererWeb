@@ -39,11 +39,14 @@ export class LoginFormComponent implements OnInit {
     this.isLoading=true
     const email=form.value.email
     const password=form.value.password
-    this.authService.LogIn(email,password).subscribe(
-      data=>{
-        console.log(data.status)
+  let data =  this.authService.LogIn(email,password).subscribe(
+      data=>{        
         this.isLoading=false
        if(data.user){
+        this.authService.setToken(data.user.accessToken)
+        this.authService.isAuthenticated()
+        this.authService.saveAuthData(data.user.accessToken)
+         console.log(data)
         switch(data.user.role){
           case 1:{
             
@@ -51,7 +54,7 @@ export class LoginFormComponent implements OnInit {
             break
           }
           case 2:{
-            this.router.navigate(['/centerProfile/centerDetails'])
+            this.router.navigate(['/centerProfile/details'])
             break
           }
           case 0:{

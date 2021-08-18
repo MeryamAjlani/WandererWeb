@@ -1,6 +1,6 @@
 <div class="container">
    
-      <mat-expansion-panel hideToggle="true" *ngFor="let item of priceItems" *ngIf="deleted">
+      <mat-expansion-panel hideToggle="true" *ngFor="let item of priceItems" >
         <mat-expansion-panel-header>
           <mat-panel-title>
        <p id="name">{{item.label}}</p> <p>{{item.description}}</p>
@@ -17,7 +17,7 @@
             <i class="fa fa-tags"></i> Product Name :
            </label>
            <div>
-              <input  type="text" ngModel name="name" required 
+              <input  type="text" ngModel name="name" required
               #name='ngModel'
               >
           </div>
@@ -28,8 +28,8 @@
               <i class="fa fa-align-left"></i>Product Description :
              </label>
              <div>
-                <input type="text" ngModel name="name" required 
-                #name='ngModel'
+                <input type="text" ngModel name="description" required 
+                #description='ngModel'
                 >
             </div>
             <div class="error"></div> 
@@ -39,8 +39,8 @@
                 <i class="fa fa-money"></i>    Product Price :
                </label>
                <div>
-                  <input type="text" ngModel name="name" required 
-                  #name='ngModel'
+                  <input type="text" ngModel name="price" required 
+                  #price='ngModel'
                   >
               </div>
               <div class="error"></div> 
@@ -50,8 +50,8 @@
                 <i class="fa fa-stack-overflow"></i> In Stock :
                </label>
                <div>
-                  <input type="text" ngModel name="name" required 
-                  #name='ngModel'
+                  <input type="text" ngModel name="stock" required 
+                  #stock='ngModel'
                   >
               </div>
               <div class="error"></div> 

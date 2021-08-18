@@ -2,7 +2,7 @@
  
   <div class =" ">
     <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
-        <form class = " "  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading" autocomplete="off">
+        <form class = " "  [formGroup]="updateCenter"  *ngIf="!isLoading" autocomplete="off" (ngSubmit)="onSubmit()">
           <div class="title">
             <p>Center Information :</p>
           </div>
@@ -12,27 +12,28 @@
            Center Name :
            </label>
            <div>
-              <input class="form-control " type="email" ngModel name="email" email required 
-              #email='ngModel'
+              <input formControlName="centerName" class="form-control " 
               >
           </div>
-          <div class="error"></div> 
+          <div class="error" *ngIf="updateCenter.get('centerName')?.touched && !updateCenter.get('centerName')?.valid">Invalid entry !</div> 
            </div> 
            <div  class="block col-md-4">  
              <label>Status :</label>
 
-             <input   class="form-control" type="text" ngModel name="password" required >
+             <mat-slide-toggle [(ngModel)]="status" formControlName="status">
+               <p >{{status?"Open":"Closed"}}</p>
             
-            <div class="error"></div>
+             </mat-slide-toggle>
+          
             </div>
           </div>
           <div  class="block row ">  
             <label>Description :</label>
             <div class="inputContainer col-md-12"> 
             
-            <textarea   class="form-control" type="text" ngModel name="password" required ></textarea>
+            <textarea  formControlName="description" class="form-control" type="text" ></textarea>
            </div>
-           <div class="error"></div>
+           <div class="error" *ngIf="updateCenter.get('description')?.touched && !updateCenter.get('description')?.valid">Invalid entry !</div>
            </div>
         
            <div class="title">
@@ -41,20 +42,20 @@
               <div class="row">
               <div  class="block  col-md-4">  
                 <label>Address :</label>
-                <div class="inputContainer"> 
+                <div class="inputContainer" > 
                 
-                <input   class="form-control" type="text" ngModel name="password" required >
+                <input formControlName='address' class="form-control" type="text"  >
                </div>
-               <div class="error"></div>
+               <div class="error" *ngIf="updateCenter.get('address')?.touched && !updateCenter.get('address')?.valid" > Invalid entry !</div>
                </div>
               
                <div  class="block  col-md-4">  
                 <label>City :</label>
                 <div class="inputContainer"> 
                 
-                <input   class="form-control" type="text" ngModel name="password" required >
+                <input formControlName='city' class="form-control" type="text"  >
                </div>
-               <div class="error"></div>
+               <div class="error"  *ngIf="updateCenter.get('city')?.touched && !updateCenter.get('city')?.valid">Invalid entry !</div>
                </div>
                </div>
                <div class="row">
@@ -62,17 +63,17 @@
                 <label>Coordinates (long) :</label>
                 <div class="inputContainer"> 
                 
-                <input   class="form-control" type="text" ngModel name="password" required >
+                <input  class="form-control" type="text" formControlName='long' >
                </div>
-               <div class="error"></div>
+               <div class="error"  *ngIf="updateCenter.get('long')?.touched && !updateCenter.get('long')?.valid">Invalid entry !</div>
                </div>
                <div  class=" block col-md-4">  
                 <label>Coordinates (lat) :</label>
                 <div class="inputContainer"> 
                 
-                <input   class="form-control" type="text" ngModel name="password" required >
+                <input  formControlName='lat' class="form-control" type="text" >
                </div>
-               <div class="error"></div>
+               <div class="error" *ngIf="updateCenter.get('lat')?.touched && !updateCenter.get('lat')?.valid">Invalid entry !</div>
                </div>
                </div>
                <div class="title">
@@ -83,9 +84,9 @@
                     <label>Email :</label>
                     <div class="inputContainer"> 
                     
-                    <input  class="form-control" type="text" ngModel name="password" required >
+                    <input  class="form-control" type="text" formControlName='email' >
                    </div>
-                   <div class="error"></div>
+                   <div class="error" *ngIf="updateCenter.get('email')?.touched && !updateCenter.get('email')?.valid">Invalid entry !</div>
                    </div>
                   
                    <div class="row">
@@ -93,17 +94,17 @@
                      <label>Password :</label>
                      <div class="inputContainer"> 
                      
-                     <input   class="form-control" type="text" ngModel name="password" required >
+                     <input  formControlName='password' class="form-control"  >
                     </div>
-                    <div class="error"></div>
+                    <div class="error" *ngIf="updateCenter.get('password')?.touched && !updateCenter.get('password')?.valid">Invalid entry !</div>
                     </div>
                     <div  class=" block col-md-4">  
                      <label>Confirm Password :</label>
                      <div class="inputContainer"> 
                      
-                     <input   class="form-control" type="text" ngModel name="password" required >
+                     <input formControlName='confirm'  class="form-control" >
                     </div>
-                    <div class="error"></div>
+                    <div class="error" *ngIf="updateCenter.get('confirm')?.touched && !updateCenter.get('confirm')?.valid">Invalid entry !</div>
                     </div>
                     </div>
                    </div>

@@ -4,12 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Spinner } from './Shared/Spinner/Spinner';
 import { LoginFormComponent } from './Authentification/login-form/login-form.component';
 import { ResetRequestFormComponent } from './Authentification/reset-request-form/reset-request-form.component';
 import { ResetPasswordComponent } from './Authentification/reset-password/reset-password.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CenterProfileComponent } from './CampingCenter/center-profile/center-profile.component';
 import { SideBarComponent } from './CampingCenter/side-bar/side-bar.component';
 import { CenterDetailsComponent } from './CampingCenter/center-details/center-details.component';
@@ -21,6 +21,9 @@ import { CarouselComponent } from './CampingCenter/center-profile/carousel/carou
 import { ReviewsComponent } from './CampingCenter/reviews/reviews.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { PriceItemComponent } from './CampingCenter/price/price-item/price-item.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AuthInterceptiorService } from './Services/auth-interceptior.service';
+import { RouteGuardGuard } from './Services/route-guard.guard';
 
 
 
@@ -44,6 +47,8 @@ import { PriceItemComponent } from './CampingCenter/price/price-item/price-item.
     
   ],
   imports: [
+    MatSlideToggleModule,
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     NgbModule,
@@ -53,12 +58,12 @@ import { PriceItemComponent } from './CampingCenter/price/price-item/price-item.
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: '/login' },
-      { path: 'login', component: LoginFormComponent },
-      { path: 'resetPassword', component: ResetRequestFormComponent},
-      { path: 'confirmCode', component: CodeInputComponent},
-      { path: 'newPassword', component: ResetPasswordComponent},
+      { path: 'login', component: LoginFormComponent ,canActivate:[RouteGuardGuard]},
+      { path: 'resetPassword', component: ResetRequestFormComponent,canActivate:[RouteGuardGuard]},
+      { path: 'confirmCode', component: CodeInputComponent,canActivate:[RouteGuardGuard]},
+      { path: 'newPassword', component: ResetPasswordComponent,canActivate:[RouteGuardGuard]},
 
-      { path: 'centerProfile', component: CenterProfileComponent, children:[
+      { path: 'centerProfile', component: CenterProfileComponent, canActivate:[RouteGuardGuard],children:[
         {
           path:'details', component:CenterDetailsComponent
         },
@@ -75,7 +80,9 @@ import { PriceItemComponent } from './CampingCenter/price/price-item/price-item.
     ]),
     
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,useClass:AuthInterceptiorService,multi:true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -74,3 +74,7 @@ mat-expansion-panel{
    margin-top: 2%;
     margin-bottom: 2%;
 }
+button:hover{
+    background-color: #2f0328;
+    border-color: #2f0328;
+}

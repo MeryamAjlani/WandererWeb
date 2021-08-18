@@ -8,11 +8,12 @@ import { CenterPrice } from 'src/app/Models/CenterPrice';
 export class PriceItemsService {
 priceItems:CenterPrice[];
   constructor() { 
-    this.priceItems=[new CenterPrice('miao',"miao caramel",50,"dddd",5,5),
-    new CenterPrice('miao',"miao caramel",50,"dddd",5,5),
-    new CenterPrice('miao',"miao caramel",50,"dddd",5,5),
-    new CenterPrice('miao',"miao caramel",50,"dddd",5,5),
-    new CenterPrice('miao',"miao caramel",50,"dddd",5,5)
+    this.priceItems=[new CenterPrice("eeee",'miao',"miao caramel",50,"dddd",5,5),
+    new CenterPrice("eeee",'miao',"miao caramel",50,"dddd",5,5),
+    new CenterPrice("eeee",'miao',"miao caramel",50,"dddd",5,5),
+    new CenterPrice("eeee",'miao',"miao caramel",50,"dddd",5,5),
+    new CenterPrice("eeee",'miao',"miao caramel",50,"dddd",5,5),
+    
   ]
   }
   getItems():CenterPrice[]{
