@@ -12,9 +12,9 @@ export class RouteGuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const isAuth=localStorage.getItem('token')
-    if(!isAuth) this.router.navigate(['/login'])
-    else{this.router.navigate(['/centerProfile/details'])}
-    return true
+    if(!isAuth) this.router.navigate(['/'])
+   
+    return isAuth!=null
   }
   
 }

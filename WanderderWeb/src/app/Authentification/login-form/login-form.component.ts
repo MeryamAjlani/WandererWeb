@@ -2,6 +2,7 @@ import { transformAll } from '@angular/compiler/src/render3/r3_ast';
 import { Component, getPlatform, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { AuthentificationServiceService } from 'src/app/Services/authentification-service.service';
 
 
@@ -16,6 +17,7 @@ export class LoginFormComponent implements OnInit {
   isLoading: boolean
   errorEmail:string;
   errorPassword:string;
+ 
   state:string[];
   constructor(private authService:AuthentificationServiceService,private router:Router) {
     this.isLoading=false;
@@ -39,13 +41,15 @@ export class LoginFormComponent implements OnInit {
     this.isLoading=true
     const email=form.value.email
     const password=form.value.password
-  let data =  this.authService.LogIn(email,password).subscribe(
+     this.authService.LogIn(email,password).subscribe(
       data=>{        
         this.isLoading=false
+        console.log(data.user)
        if(data.user){
         this.authService.setToken(data.user.accessToken)
         this.authService.isAuthenticated()
-        this.authService.saveAuthData(data.user.accessToken)
+        this.authService.saveAuthData(data.user.accessToken,email)
+
          console.log(data)
         switch(data.user.role){
           case 1:{

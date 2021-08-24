@@ -64,10 +64,12 @@ button{
     width:200px;
     border-radius:50px;
     font-weight: bold;
-    margin-top: 10%;
+    margin-top: 5%;
     padding-bottom: 20px;
     height: 30px;
     padding-bottom: 30px;
+    align-self: flex-end;
+    margin-right: 30%;
 }
 button:hover{
     background-color: #5e2382;
@@ -88,3 +90,13 @@ input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched{
     color: yellow;
     padding-bottom:  10px;
 }
+.spinner{
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+}
+mat-option{
+    color: aliceblue;
+}
+
+

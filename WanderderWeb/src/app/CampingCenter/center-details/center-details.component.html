@@ -1,8 +1,9 @@
-<div class="detailForm">
+<div class="spinner" *ngIf="isLoading"><app-spinner></app-spinner></div>
+<div class="detailForm" *ngIf="!isLoading">
  
   <div class =" ">
     <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
-        <form class = " "  [formGroup]="updateCenter"  *ngIf="!isLoading" autocomplete="off" (ngSubmit)="onSubmit()">
+        <form class = " "  [formGroup]="updateCenter"  *ngIf="!isLoading" autocomplete="off" (ngSubmit)="submitChanges()">
           <div class="title">
             <p>Center Information :</p>
           </div>
@@ -52,13 +53,15 @@
                <div  class="block  col-md-4">  
                 <label>City :</label>
                 <div class="inputContainer"> 
-                
-                <input formControlName='city' class="form-control" type="text"  >
+                  <select class="custom-select" (change)="changeCity($event)" formControlName="cityName">
+                    <option value="" disabled>Choose your city</option>
+                    <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+                 </select>
                </div>
                <div class="error"  *ngIf="updateCenter.get('city')?.touched && !updateCenter.get('city')?.valid">Invalid entry !</div>
                </div>
                </div>
-               <div class="row">
+<!--<div class="row">
                <div  class="block  col-md-4">  
                 <label>Coordinates (long) :</label>
                 <div class="inputContainer"> 
@@ -67,7 +70,7 @@
                </div>
                <div class="error"  *ngIf="updateCenter.get('long')?.touched && !updateCenter.get('long')?.valid">Invalid entry !</div>
                </div>
-               <div  class=" block col-md-4">  
+              <div  class=" block col-md-4">  
                 <label>Coordinates (lat) :</label>
                 <div class="inputContainer"> 
                 
@@ -75,8 +78,8 @@
                </div>
                <div class="error" *ngIf="updateCenter.get('lat')?.touched && !updateCenter.get('lat')?.valid">Invalid entry !</div>
                </div>
-               </div>
-               <div class="title">
+               </div>-->
+ <!-- <div class="title">
                 <p>Credentials :</p>
               </div> 
                   <div class="row">
@@ -106,12 +109,11 @@
                     </div>
                     <div class="error" *ngIf="updateCenter.get('confirm')?.touched && !updateCenter.get('confirm')?.valid">Invalid entry !</div>
                     </div>
-                    </div>
-                   </div>
-             <button type="submit" class="btn btn-primary"> Update Information</button>
+                    </div>-->
+                   
+             <button type="submit" class="btn btn-primary" >  Update Information</button>
             
         </form>
-         
-        <app-carousel></app-carousel>
+        
     </div>
 </div>

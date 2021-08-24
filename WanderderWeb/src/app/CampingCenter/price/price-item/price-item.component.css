@@ -1,0 +1,92 @@
+.container{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+}
+th{
+    color: aliceblue;
+    
+}
+td{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: azure;
+}
+i{
+    color:  #e4648f;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+input,input:focus {
+    border: transparent;
+    border: 0;
+    width: 80%;
+    outline: 0;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.801);
+    color: #f1edf0;
+  }
+  button{
+      background-color:#e4648f;
+      border: #e4648f;
+  }
+  mat-expansion-panel{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    background-color:#352741;
+    border: #e7accf 1px solid;
+    width:900px;
+  }
+
+p{
+    color:#f3ddeade ;
+}
+#name{
+    font-size: 22px;
+}
+mat-panel-title{
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+}
+.icon{
+  
+    position: absolute;
+    right:0;
+    padding-right: 30px;
+    display: flex;
+    justify-content:flex-end ;
+    align-items: center;
+}
+.block{
+    padding-top: 20px;
+}
+label{
+    color: #e4648f;
+}
+.formContainer{
+padding-left:10%;
+}
+mat-expansion-panel{
+   margin-top: 2%;
+    margin-bottom: 2%;
+}
+button:hover{
+    background-color: #2f0328;
+    border-color: #2f0328;
+}
+input.ng-invalid.ng-touched{
+    border-bottom: rgb(240, 240, 149) solid 2px;}
+    .error{
+        color: yellow;
+        padding-bottom:  10px;
+        padding-top: 5px;
+    }

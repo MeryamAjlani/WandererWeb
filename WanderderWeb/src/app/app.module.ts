@@ -24,6 +24,8 @@ import { PriceItemComponent } from './CampingCenter/price/price-item/price-item.
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AuthInterceptiorService } from './Services/auth-interceptior.service';
 import { RouteGuardGuard } from './Services/route-guard.guard';
+import { CloudinaryModule } from '@cloudinary/angular';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -46,7 +48,9 @@ import { RouteGuardGuard } from './Services/route-guard.guard';
 
     
   ],
-  imports: [
+  imports: [ 
+    CloudinaryModule,
+    MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -58,10 +62,10 @@ import { RouteGuardGuard } from './Services/route-guard.guard';
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: '/login' },
-      { path: 'login', component: LoginFormComponent ,canActivate:[RouteGuardGuard]},
-      { path: 'resetPassword', component: ResetRequestFormComponent,canActivate:[RouteGuardGuard]},
-      { path: 'confirmCode', component: CodeInputComponent,canActivate:[RouteGuardGuard]},
-      { path: 'newPassword', component: ResetPasswordComponent,canActivate:[RouteGuardGuard]},
+      { path: 'login', component: LoginFormComponent },
+      { path: 'resetPassword', component: ResetRequestFormComponent},
+      { path: 'confirmCode', component: CodeInputComponent},
+      { path: 'newPassword', component: ResetPasswordComponent},
 
       { path: 'centerProfile', component: CenterProfileComponent, canActivate:[RouteGuardGuard],children:[
         {

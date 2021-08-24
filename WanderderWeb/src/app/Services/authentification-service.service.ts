@@ -75,8 +75,9 @@ export class AuthentificationServiceService {
     this.authStatusListener.next(false)
    
   }
-  saveAuthData(token:string){
+  saveAuthData(token:string,email:string){
     localStorage.setItem('token',token)
+    localStorage.setItem('email',email)
   }
   clearAuthData(){
     localStorage.removeItem('token')

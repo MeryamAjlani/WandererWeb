@@ -1,21 +1,26 @@
-<div class="outterContainer">
-    <div class="container">
-        <div class="cover"> 
+<div class="outterContainer">   
+  <div class="container">
+  <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
+        <div class="cover" *ngIf="!isLoading" [style.background-image]="'linear-gradient(to top, rgba(1, 4, 19, 0.829),rgba(170, 132, 161, 0)), url(\''+coverImage+'\');'"> 
+         
           <div >
-            <p id="center_Name">Center Name</p>
+            <p id="center_Name">{{centerName}}</p>
+            <ngb-rating [rate]="centerRating ||0"></ngb-rating>
            <div id="city"> <i class="fa fa-map-marker fa-2x"></i>
-            <p>Ariana</p>
+            <p>{{centerCity}}</p>
+         
         </div>
           </div>
-          <div>
-          </div>
+       
+         <i class="fa fa-camera fa-2x updatePhoto" ></i>
         </div>
       <div class="content">
         <app-side-bar></app-side-bar>
-        
+       
         <div></div>
       </div>
   
      </div>
+     <div class="sticky"><button class="btn btn-primary out" (click)="logOut()"><i class="fa fa-sign-out" ></i></button></div>
   </div>
   

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CenterPrice } from 'src/app/Models/CenterPrice';
 import { PriceItemsService } from 'src/app/Services/CampingCenter/price-items.service';
 
@@ -9,20 +9,31 @@ import { PriceItemsService } from 'src/app/Services/CampingCenter/price-items.se
   styleUrls: ['./price.component.css']
 })
 export class PriceComponent implements OnInit {
-  panelOpenState:boolean;
+
   show:boolean=false;
   isLoading:boolean;
-  isDeleted:boolean;
   priceItems:CenterPrice[];
   deletedItems:string[];
   updatedItems:CenterPrice[]
+  updatePrice:FormGroup;
   constructor(private priceService:PriceItemsService) {
-    this.isDeleted=false
-    this.panelOpenState=false
-    this.isLoading=false
+   
+    this.isLoading=true
     this.priceItems=this.priceService.getItems()
     this.deletedItems=[]
     this.updatedItems=[]
+    this.updatePrice=new FormGroup({
+      "label":new FormControl('',Validators.required),
+      "description":new FormControl('',Validators.required),
+      "price":new FormControl('',Validators.required),
+      "reserved":new FormControl('',Validators.required),
+      "stock":new FormControl('',Validators.required),
+    })
+    this.priceService.getPrices().subscribe(data=>{
+      console.log(data)
+      this.isLoading=false
+      this.priceItems=data
+    })
    }
 
 
@@ -34,5 +45,14 @@ export class PriceComponent implements OnInit {
   deleteItem(itemID:string):void{
     this.deletedItems.push(itemID)
   }
-  onSubmit(form:NgForm):void{}
+  onSubmit():void{
+    if(!this.updatePrice.valid){return;}
+    let price=this.updatePrice.get('price')?.value
+    let label =this.updatePrice.get('label')?.value
+    let description=this.updatePrice.get('description')?.value
+    let stock=this.updatePrice.get('stock')?.value
+    let reserved=this.updatePrice.get('reserved')?.value
+
+  }
+  
 }

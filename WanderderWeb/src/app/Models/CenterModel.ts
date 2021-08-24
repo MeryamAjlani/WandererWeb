@@ -1,6 +1,8 @@
 import { User } from "./UserModel";
 
 export class Center{
+
+    _id:string;
     userID:User;
     name:string;
     picture:string;
@@ -11,7 +13,10 @@ export class Center{
     coordinates:number[];
     status:boolean;
     price:number;
-constructor(  userID:User,
+    streetAdress:string;
+constructor( 
+    address:string,
+     _id:string,userID:User,
     name:string,
     picture:string,
     city:string,
@@ -21,6 +26,8 @@ constructor(  userID:User,
     coordinates:number[],
     status:boolean,
     price:number){
+        this.streetAdress=address
+        this._id=_id
         this.city=city
         this.coordinates=coordinates
         this.description=description
