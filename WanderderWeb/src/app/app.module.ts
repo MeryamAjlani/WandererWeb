@@ -60,28 +60,6 @@ import {MatSelectModule} from '@angular/material/select';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: '', pathMatch: 'full', redirectTo: '/login' },
-      { path: 'login', component: LoginFormComponent },
-      { path: 'resetPassword', component: ResetRequestFormComponent},
-      { path: 'confirmCode', component: CodeInputComponent},
-      { path: 'newPassword', component: ResetPasswordComponent},
-
-      { path: 'centerProfile', component: CenterProfileComponent, canActivate:[RouteGuardGuard],children:[
-        {
-          path:'details', component:CenterDetailsComponent
-        },
-        {
-          path:'reviews', component:ReviewsComponent
-        },
-       { path:'reservations', component:ReservationComponent},
-       {
-         path:'prices',component:PriceComponent
-       },
-       { path: '', pathMatch: 'full', redirectTo: 'details' }
-      ]
-    }
-    ]),
     
   ],
   providers: [{

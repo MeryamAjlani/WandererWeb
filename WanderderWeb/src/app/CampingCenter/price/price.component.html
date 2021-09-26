@@ -1,6 +1,79 @@
 
- <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
+  <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
 <div class="container" *ngIf="!isLoading">
-   
+  <div class="empty" *ngIf="isEmpty">
+    <p>No Price Items Added Yet!</p>
+  </div>
+    <div class="block1">
+      <p>Center Acces Price</p>
+     <form [formGroup]="accessPrice">
+       <input formControlName="price" type="number">
+     </form>
+    </div>
       <app-price-item *ngFor="let item of priceItems" [item]="item"></app-price-item>
+     <div class="buttons">
+      <button class="btn btn-primary" *ngIf="!isEmpty" (click)="submitChange()">Confirm Changes</button>
+      <button class="btn btn-primary"  *ngIf="!isEmpty" (click)="restoreValues()">Restore</button>
+      <button class="btn btn-primary"  (click)="openVerticallyCentered(content)" >Add Item</button>
+     </div>
+
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Add Price Item</h4>
+  </div>
+  <div class="modal-body">
+   
+    <form [formGroup]="addPrice" class = " formContainer" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="block">
+       <label>
+         <i class="fa fa-tags"></i> Product Name :
+        </label>
+        <div>
+           <input formControlName="label" type="text"
+         
+           >
+       </div>
+       <div class="error" *ngIf="addPrice.get('label')?.touched && !addPrice.get('label')?.valid">Invalid Entry !</div> 
+        </div> 
+        <div class="block">
+         <label>
+           <i class="fa fa-align-left"></i>Product Description :
+          </label>
+          <div>
+             <input type="text" formControlName="description"
+           
+             >
+         </div>
+         <div class="error" *ngIf="addPrice.get('description')?.touched && !addPrice.get('description')?.valid">Invalid Entry !</div> 
+          </div> 
+          <div class="block">
+           <label>
+             <i class="fa fa-money"></i>    Product Price :
+            </label>
+            <div>
+               <input type="text" formControlName="price"
+               >
+           </div>
+           <div class="error" *ngIf="addPrice.get('price')?.touched && !addPrice.get('price')?.valid">Invalid Entry</div> 
+            </div>  
+              <div class="block">
+           <label>
+             <i class="fa fa-stack-overflow"></i> In Stock :
+            </label>
+            <div>
+               <input type="text" formControlName="stock"
+               >
+           </div>
+           <div class="error"  *ngIf="addPrice.get('stock')?.touched && !addPrice.get('stock')?.valid">Invalid Entry</div> 
+            </div> 
+            <div class="actions">
+              <button type="submit" mat-button class="btn btn-primary">Add item</button>
+            <button mat-button class="btn btn-primary" (click)="modal.close('Close click')">Close</button>
+            </div>
+   </form>
+  </div>
+
+</ng-template>
+

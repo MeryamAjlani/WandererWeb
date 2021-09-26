@@ -13,7 +13,7 @@
  .user{
      display: flex;
      align-items: center;
-
+     width: 90%;
  }
  i{
      color: #e7accf;
@@ -55,4 +55,24 @@
      color: aliceblue;
      margin-bottom: 1%;
      margin-top: -1%;
+ }
+ .empty p{
+     color: #f0d3e4;
+     font-size: 20px;
+ }
+ .empty{
+     display: flex;
+     justify-content: center;
+     margin-top: 50px;
+     flex-direction: column;
+    align-items: center;
+ }
+ .empty img{
+   padding-bottom: 10px;
+     width:110px;
+ }
+ .spinner{
+     display: flex;
+     justify-content: center;
+    
  }

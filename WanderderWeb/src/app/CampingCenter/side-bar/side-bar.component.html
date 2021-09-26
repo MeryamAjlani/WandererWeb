@@ -5,16 +5,25 @@
 
         <ul class="list-unstyled nav navbar-nav ">
           
-            <li  class="active">
+            <li [ngClass]="this.router.url =='/centerProfile/details'? 'active' : ''">
                 <a routerLink="details">Center Details</a>
             </li>
-            <li> 
-                    <a routerLink="reservations">Reservation Requests</a>
-            </li>
-            <li>
+            
+                <div ngbDropdown >
+                    <li  id="dropdownBasic1" ngbDropdownToggle>Reservations</li>
+                    <div class="contentDrop" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <a [ngClass]="this.router.url =='/centerProfile/reservations/0'? 'active' : ''" ngbDropdownItem  [routerLink]="['reservations', 0]">Confirmed</a>
+                      <a  [ngClass]="this.router.url =='/centerProfile/reservations/1'? 'active' : ''" ngbDropdownItem [routerLink]="['reservations', 1]">Pending</a>
+                      <a  [ngClass]="this.router.url =='/centerProfile/reservations/2'? 'active' : ''" ngbDropdownItem [routerLink]="['reservations', 2]">All Reservations</a>
+                      <a  [ngClass]="this.router.url =='/centerProfile/reservations/3'? 'active' : ''" ngbDropdownItem [routerLink]="['reservations', 3]">Reservation Calendar</a>
+                    </div>
+                  </div>
+                 
+            
+            <li [ngClass]="this.router.url =='/centerProfile/prices'? 'active' : ''">
                 <a routerLink="prices">Prices</a>
             </li>
-            <li >
+            <li [ngClass]="this.router.url =='/centerProfile/reviews'? 'active' : ''">
                 <a routerLink="reviews" class="active">Reviews</a>
             </li>
          

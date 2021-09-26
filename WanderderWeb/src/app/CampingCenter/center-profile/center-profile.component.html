@@ -1,7 +1,9 @@
 <div class="outterContainer">   
   <div class="container">
   <div  *ngIf="isLoading" style="margin-top: 10%;"><app-spinner></app-spinner></div>
-        <div class="cover" *ngIf="!isLoading" [style.background-image]="'linear-gradient(to top, rgba(1, 4, 19, 0.829),rgba(170, 132, 161, 0)), url(\''+coverImage+'\');'"> 
+        <div class="cover" *ngIf="!isLoading"
+        [ngStyle]="{background:'linear-gradient(to top, rgba(1, 4, 19, 0.829),rgba(170, 132, 161, 0)),url('+ coverImage+' ) no-repeat' }"
+        > 
          
           <div >
             <p id="center_Name">{{centerName}}</p>
@@ -11,8 +13,8 @@
          
         </div>
           </div>
-       
-         <i class="fa fa-camera fa-2x updatePhoto" ></i>
+          <button class=" updatePhoto" (click)="openVerticallyCentered(content)"><i class="fa fa-camera fa-2x " ></i></button>
+         
         </div>
       <div class="content">
         <app-side-bar></app-side-bar>
@@ -21,6 +23,31 @@
       </div>
   
      </div>
+     <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Update Center Cover Image</h4>
+        
+      
+      </div>
+      <div class="modal-body">
+        <div class="block">
+          <div class="noImage" *ngIf="!imageFile">
+            <i class="fa fa-camera fa-2x"></i>
+            <p >no Files Chosen</p>
+            <input  enctype="multipart/form-data" type="file" (change)="onFileSelected($event)" accept="image/*">
+          </div>
+       
+        <img  [src]="url" *ngIf="imageFile" >
+       
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary b" (click)="uploadImage()"  >Upload Image</button>
+        <button type="button" class="btn btn-primary b" (click)="modal.close('Close click')">Close</button>
+       
+      </div>
+    </ng-template>
+    
      <div class="sticky"><button class="btn btn-primary out" (click)="logOut()"><i class="fa fa-sign-out" ></i></button></div>
   </div>
   

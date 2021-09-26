@@ -16,7 +16,7 @@ td{
     padding-bottom: 10px;
     color: azure;
 }
-i{
+.icon i{
     color:  #e4648f;
     font-size: 20px;
     padding-left: 20px;
@@ -34,7 +34,7 @@ input,input:focus {
     border-bottom: 1px solid rgba(255, 255, 255, 0.801);
     color: #f1edf0;
   }
-  button{
+  button,button:focus{
       background-color:#e4648f;
       border: #e4648f;
   }
@@ -85,8 +85,39 @@ button:hover{
 }
 input.ng-invalid.ng-touched{
     border-bottom: rgb(240, 240, 149) solid 2px;}
-    .error{
+
+.error{
         color: yellow;
         padding-bottom:  10px;
         padding-top: 5px;
-    }
+ }
+ button i{
+     color:#f1edf0
+ }
+ mat-action-row button{
+     margin-top: 10px;
+    margin-right: 2%;
+ }
+ .restore{
+     padding-top: 10px;
+  padding-bottom: 10px;
+   border: rgba(255, 255, 123, 0.973) 1px solid;
+   border-radius: 20px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+ .restore p{
+     size: 20px;
+     color: #f1edf0;
+ }
+ .restore i{
+    color:  #e4648f;
+    font-size: 20px;
+    padding-bottom: 20px;
+ }
+ span{
+     text-decoration: underline;
+     color: #e4648f;
+ }

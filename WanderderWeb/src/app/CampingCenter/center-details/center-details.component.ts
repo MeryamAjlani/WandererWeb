@@ -19,7 +19,7 @@ interface City {
 
 export class CenterDetailsComponent implements OnInit {
   isLoading:boolean;
-  @Output() event:EventEmitter<Map<string,string>>=new EventEmitter<Map<string,string>>()
+ 
   updateCenter:FormGroup;
   status:boolean;
   center?:Center;
@@ -60,7 +60,7 @@ export class CenterDetailsComponent implements OnInit {
       "status": new FormControl(status,Validators.required),
       "description": new FormControl('',[Validators.required]),
       "address":new FormControl('',Validators.required),
-      "city":new FormControl('',Validators.required),
+      "city":new FormControl(0,Validators.required),
      /* "lat":new FormControl('',Validators.required),
       "long":new FormControl('',Validators.required),
    */
@@ -77,6 +77,7 @@ export class CenterDetailsComponent implements OnInit {
        this.isLoading=false
        localStorage.setItem('center',respnse.profile._id)
       this.center=respnse.profile
+      localStorage.setItem("price",''+respnse.profile.price)
       localStorage.setItem("cover",respnse.profile.picture)
       localStorage.setItem("rating",respnse.profile.rating.toString())
       localStorage.setItem("city",respnse.profile.city)
@@ -115,6 +116,8 @@ submitChanges(){
   const city=this.updateCenter.get('city')?.value
   const address=this.updateCenter.get('address')?.value
   this.profileservice.updateCenterProfile(name,description,status,city,address).subscribe(data=>{
+
+    this.profileservice.getHeaderListener().next([name,city])
     console.log(data)
     this.isLoading=false
   },err=>{

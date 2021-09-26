@@ -53,10 +53,11 @@
                <div  class="block  col-md-4">  
                 <label>City :</label>
                 <div class="inputContainer"> 
-                  <select class="custom-select" (change)="changeCity($event)" formControlName="cityName">
-                    <option value="" disabled>Choose your city</option>
-                    <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
-                 </select>
+                  <select class="form-select" formControlName='city'>
+                    
+                    <option *ngFor="let city of cities" value={{city.value}} >{{city.viewValue}}</option>
+                  
+                  </select>
                </div>
                <div class="error"  *ngIf="updateCenter.get('city')?.touched && !updateCenter.get('city')?.valid">Invalid entry !</div>
                </div>

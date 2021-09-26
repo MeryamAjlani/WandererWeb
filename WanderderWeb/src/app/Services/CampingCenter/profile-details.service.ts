@@ -3,14 +3,46 @@ import { error } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Center } from 'src/app/Models/CenterModel';
-
+interface City {
+  value: number;
+  viewValue: string;
+}
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProfileDetailsService {
-dataFetched:Subject<boolean>=new Subject<boolean>()
-  constructor(private http:HttpClient) {
   
+dataFetched:Subject<boolean>=new Subject<boolean>()
+cities:City[];
+headerUpdated:Subject<string[]>=new Subject<string[]>()
+  constructor(private http:HttpClient) {
+    this.cities=[
+      {value: 0, viewValue: 'Ariana'},
+      {value: 1, viewValue: 'Béja'},
+      {value: 2, viewValue: 'Ben Arous'},
+      {value: 3, viewValue: 'Bizert'},
+      {value: 4, viewValue: 'Gabès'},
+      {value: 5, viewValue: 'Gafsa'},
+      {value: 6, viewValue: 'Jendouba'},
+      {value: 7, viewValue: 'Kairouan'},
+      {value: 8, viewValue: 'Kasserine'},
+      {value: 9, viewValue: 'Kébili'},
+      {value: 10, viewValue: 'Le Kef'},
+      {value: 11, viewValue: 'Mahdia'},
+      {value: 12, viewValue: 'La Manouba'},
+      {value: 13, viewValue: 'Médenine'},
+      {value: 14, viewValue: 'Monastir'},
+      {value: 15, viewValue: 'Nabeul'},
+      {value: 16, viewValue: 'Sfax'},
+      {value: 17, viewValue: 'Sidi Bouzid'},
+      {value: 18, viewValue: 'Siliana'},
+      {value: 19, viewValue: 'Sousse'},
+      {value: 20, viewValue: 'Tataouine'},
+      {value: 21, viewValue: 'Tozeur'},
+      {value: 22, viewValue: 'Tunis'},
+      {value: 23, viewValue: 'Zaghrouan'},
+    ];
    }
    dataFecthedFromServer(){
      this.dataFetched.next(true)
@@ -36,5 +68,16 @@ dataFetched:Subject<boolean>=new Subject<boolean>()
 
     })
   }
-  
+  updateHeader(name:string,city:string){
+
+  }
+  getHeaderListener():Subject<string[]>{
+    return this.headerUpdated
+  }
+  getCityName(index:number){
+let city=this.cities.find(el=>
+      el.value==index)
+      console.log(city?.viewValue)
+      return city?.viewValue
+  }
 }

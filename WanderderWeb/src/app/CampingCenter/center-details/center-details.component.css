@@ -2,7 +2,7 @@ label{
     color: rgba(255, 255, 255, 0.74);
     padding-bottom: 10px;
 }
-input{
+input,select{
     margin-bottom: 20px;
     background-color: #2f0328;
     width:95%;
@@ -10,7 +10,7 @@ input{
     color: rgba(255, 255, 255, 0.74);
     
 }
-input:focus{
+input:focus,select:focus{
     background-color: #2f0328;
     border-color: rgba(105, 25, 99, 0.8);
     box-shadow: 0 1px 1px #e4648f inset, 0 0 5px #e7accf;
@@ -95,8 +95,6 @@ input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched{
     justify-content: center;
     padding-top: 10%;
 }
-mat-option{
-    color: aliceblue;
-}
+
 
 

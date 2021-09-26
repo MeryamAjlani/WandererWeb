@@ -22,6 +22,7 @@ interface ErrorInterface{
 export class AuthentificationServiceService {
   private token!:string;
    private email:string;
+   private tokenTimer:any;
    private authStatusListener=new Subject<boolean>()
   constructor(private http: HttpClient,private router:Router) {
     this.email=''
@@ -62,7 +63,7 @@ export class AuthentificationServiceService {
   }
   setToken(token:string){this.token=token}
   getToken(){
-    return this.token
+    return localStorage.getItem('token')
   }
   getStatusListener(){
     return this.authStatusListener.asObservable()
@@ -76,8 +77,12 @@ export class AuthentificationServiceService {
    
   }
   saveAuthData(token:string,email:string){
+
     localStorage.setItem('token',token)
     localStorage.setItem('email',email)
+  this.tokenTimer=setTimeout(()=>{
+      this.logOut()
+    },60*60*3600)
   }
   clearAuthData(){
     localStorage.removeItem('token')
@@ -94,5 +99,7 @@ export class AuthentificationServiceService {
     this.authStatusListener.next(false)
     this.clearAuthData()
     this.router.navigate(['/'])
+    clearTimeout(this.tokenTimer)
   }
+  
 }

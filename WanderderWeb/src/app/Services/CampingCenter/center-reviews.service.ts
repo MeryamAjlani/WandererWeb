@@ -12,8 +12,8 @@ reviews:CenterReview[]=[]
   
   }
   public getReviews(){
-   return this.http.post('http://localhost:3000/center/ratings',{
-     center:localStorage._id
+   return this.http.post<any[]>('http://localhost:3000/center/ratings',{
+     center:localStorage.center
    })
   }
 

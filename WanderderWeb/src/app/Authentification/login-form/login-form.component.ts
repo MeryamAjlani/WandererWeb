@@ -46,11 +46,9 @@ export class LoginFormComponent implements OnInit {
         this.isLoading=false
         console.log(data.user)
        if(data.user){
-        this.authService.setToken(data.user.accessToken)
         this.authService.isAuthenticated()
         this.authService.saveAuthData(data.user.accessToken,email)
 
-         console.log(data)
         switch(data.user.role){
           case 1:{
             

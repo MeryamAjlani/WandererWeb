@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     width: 65%;
+    height: 100%;
 }
 th{
     color: aliceblue;
@@ -32,7 +33,7 @@ input,input:focus {
     border-bottom: 1px solid rgba(255, 255, 255, 0.801);
     color: #f1edf0;
   }
-  button{
+  button,button:focus{
       background-color:#e4648f;
       border: #e4648f;
   }
@@ -78,6 +79,72 @@ mat-expansion-panel{
     margin-bottom: 2%;
 }
 button:hover{
-    background-color: #2f0328;
-    border-color: #2f0328;
+    background-color: #5a144e;
+    border-color:#5a144e
 }
+div.sticky {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 30px;
+    padding-right: 30px;
+  }
+  
+ .buttons{
+     display: flex;
+ }
+ .buttons button{
+     margin-left: 20px;
+     margin-right: 20px;
+ }
+ app-spinner{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .modal-header,.modal-body,.modal-footer{
+     background-color: #410b38;
+ }
+ .modal-title{
+     color: #e7accf;
+ }
+ input.ng-invalid.ng-touched{
+    border-bottom: rgb(240, 240, 149) solid 2px;}
+    
+.error{
+        color: yellow;
+        padding-bottom:  10px;
+        padding-top: 5px;
+ }
+ .actions{
+     display: flex;
+     justify-content: flex-end;
+     padding-top: 20px;
+     
+ }
+ .block1 p{
+     color: #e4648f;
+     font-size: 20px;
+ }
+ .block1{
+
+     padding-bottom: 40px;
+     width:50%;
+ }
+ .block1 input{
+     font-size: 30px;
+ }
+ .actions button{
+margin-left: 20px;
+margin-bottom: 20px;
+margin-top: 20px;
+ }
+ .empty{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    flex-direction: column;
+   align-items: center;
+ }

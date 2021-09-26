@@ -6,9 +6,11 @@ a{
     padding-left: 10px;
     padding-right: 10px;
 }
-
+nav{
+    border-radius:150px 0 0 20px;
+}
 a:hover{
-color: #e7accf;
+color: #e4648f;
 }
 li{
     padding-top: 5px;
@@ -19,13 +21,14 @@ li:hover{
     background-color: #352741;
 }
 ul{
+    padding-bottom: 10px;
     padding-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     border-bottom: #e7accf solid 1px;
     align-items: center;
-    
+    border-radius: 0 0 15px 15px;
     background-color:#352741;
     width: 90%;
     margin-left: 5%;
@@ -38,6 +41,34 @@ li.active a{
 .content{
     padding-bottom: 5%;
 }
+
 li{
     height: 100%;
+}
+#dropdownBasic1{
+    text-decoration: none;
+    font-size: 20px;
+    color:rgb(232, 221, 240);
+    transition: color 0.2s ease-out 100ms;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#dropdownBasic1:hover{
+    color: #e7accf;
+    }
+
+.contentDrop{
+    background-color:#3c1149;
+}
+.contentDrop a:hover{
+background-color: #3c1149;
+color: #e4648f;
+}
+.contentDrop a:active{
+    background-color: #3c1149;
+    color:#e4648f ;
+    }
+.contentDrop a{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

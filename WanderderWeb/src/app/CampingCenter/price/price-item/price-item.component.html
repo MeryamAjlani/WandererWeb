@@ -1,71 +1,83 @@
-
-<mat-expansion-panel hideToggle="true">
+<div>
+<div *ngIf="isRestored=='show'" class="restore"  [@animImageSlider]="isRestored">
+  <i class="fa fa-trash"></i>
+  <p>Item has been Deleted. Click <span (click)="restoreItem()">here</span> to resotre it.</p>
+  
+</div>
+<mat-expansion-panel  [@animImageSlider]="isDeleted" hideToggle="true" [(expanded)]="panelOpenState">
+ 
     <mat-expansion-panel-header>
       <mat-panel-title>
-   <p id="name">{{item.label}}</p> <p>{{item.description}}</p>
-     <p>{{item.price}} DT</p>
+   <p id="name">{{updatedItem.label}}</p> <p>{{updatedItem.description}}</p>
+     <p>{{updatedItem.price}} DT</p>
+   
       </mat-panel-title>
       <mat-panel-description>
-       <div class="icon"><i class="fa fa-pencil fa-2x"></i>
-        <i class="fa fa-trash fa-2x" (click)="deleteItem(item.id)"></i> </div>
+        <div class="icon"><i class="fa fa-pencil fa-2x"></i>
+         </div>
       </mat-panel-description>
+    
     </mat-expansion-panel-header>
-    <form [formGroup]="updatePrice" class = " formContainer" (ngSubmit)="onSubmit()" autocomplete="off">
+   
+  <form [formGroup]="updatePrice" class = " formContainer" (ngSubmit)="onSubmit()" autocomplete="off">
+   <div class="block">
+    <label>
+      <i class="fa fa-tags"></i> Product Name :
+     </label>
+     <div>
+        <input formControlName="label" type="text"
+      
+        >
+    </div>
+    <div class="error" *ngIf="updatePrice.get('label')?.touched && !updatePrice.get('label')?.valid">Invalid Entry !</div> 
+     </div> 
      <div class="block">
       <label>
-        <i class="fa fa-tags"></i> Product Name :
+        <i class="fa fa-align-left"></i>Product Description :
        </label>
        <div>
-          <input formControlName="label" type="text"
+          <input type="text" formControlName="description"
         
           >
       </div>
-      <div class="error" *ngIf="updatePrice.get('label')?.touched && !updatePrice.get('label')?.valid">Invalid Entry !</div> 
+      <div class="error" *ngIf="updatePrice.get('description')?.touched && !updatePrice.get('description')?.valid">Invalid Entry !</div> 
        </div> 
        <div class="block">
         <label>
-          <i class="fa fa-align-left"></i>Product Description :
+          <i class="fa fa-money"></i>    Product Price :
          </label>
          <div>
-            <input type="text" formControlName="description"
-          
+            <input type="number" formControlName="price"
             >
         </div>
-        <div class="error" *ngIf="updatePrice.get('description')?.touched && !updatePrice.get('description')?.valid">Invalid Entry !</div> 
+        <div class="error" *ngIf="updatePrice.get('price')?.touched && !updatePrice.get('price')?.valid">Invalid Entry</div> 
+         </div>  
+           <div class="block">
+        <label>
+          <i class="fa fa-stack-overflow"></i> In Stock :
+         </label>
+         <div>
+            <input type="number" formControlName="stock"
+            >
+        </div>
+        <div class="error"  *ngIf="updatePrice.get('stock')?.touched && !updatePrice.get('stock')?.valid">Invalid Entry</div> 
          </div> 
          <div class="block">
           <label>
-            <i class="fa fa-money"></i>    Product Price :
+              <i class="fa fa-check-double"></i> Reserved:
            </label>
            <div>
-              <input type="text" formControlName="price"
+              <input type="number" formControlName="reserved"
               >
           </div>
-          <div class="error" *ngIf="updatePrice.get('price')?.touched && !updatePrice.get('price')?.valid">Invalid Entry</div> 
-           </div>  
-             <div class="block">
-          <label>
-            <i class="fa fa-stack-overflow"></i> In Stock :
-           </label>
-           <div>
-              <input type="text" formControlName="stock"
-              >
-          </div>
-          <div class="error"  *ngIf="updatePrice.get('stock')?.touched && !updatePrice.get('stock')?.valid">Invalid Entry</div> 
+          <div class="error"  *ngIf="updatePrice.get('reserved')?.touched && !updatePrice.get('reserved')?.valid">Invalid Entry !</div> 
            </div> 
-           <div class="block">
-            <label>
-                <i class="fa fa-check-double"></i> Reserved:
-             </label>
-             <div>
-                <input type="text" formControlName="reserved"
-                >
-            </div>
-            <div class="error"  *ngIf="updatePrice.get('reserved')?.touched && !updatePrice.get('reserved')?.valid">Invalid Entry !</div> 
-             </div> 
-    <mat-action-row>
-      <button mat-button class="btn btn-primary">Update</button>
-    </mat-action-row>
-  </form>
+  <mat-action-row>
+    <button type="submit" mat-button class="btn btn-primary">Update</button>
+    <button mat-button class="btn btn-primary"  (click)="deleteItem()"> Delete</button>
+   
+  </mat-action-row>
+</form>
 
-  </mat-expansion-panel>
+</mat-expansion-panel>
+</div>

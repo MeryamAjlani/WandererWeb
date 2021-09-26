@@ -81,6 +81,6 @@ justify-content: space-around;
  }
  .row3{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
      margin-right: 7%;
  }

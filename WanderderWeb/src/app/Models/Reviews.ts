@@ -1,15 +1,17 @@
+import { ImageService } from "../Services/image.service";
+
 export class CenterReview{
     content:string;
-    userId:string;
+    name:string;
     rating:number;
     date:string;
-    center:string;
-    constructor(content:string,userId:string,rating:number,date:string,center:string){
-        this.center=center;
+    img:string
+    constructor(content:string,name:string,rating:number,date:string,img:string){ 
         this.content=content
-        this.date=date
+        this.date=date.substring(0,10)
         this.rating=rating
-        this.userId=userId
+        this.name=name
+        this.img=img
     }
 
 }

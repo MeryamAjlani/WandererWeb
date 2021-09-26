@@ -1,7 +1,8 @@
-import { Output } from '@angular/core';
+import { Output, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CloudinaryImage } from '@cloudinary/base';
-import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { Center } from 'src/app/Models/CenterModel';
 import { AuthentificationServiceService } from 'src/app/Services/authentification-service.service';
@@ -12,17 +13,30 @@ import { ImageService } from 'src/app/Services/image.service';
 @Component({
   selector: 'app-center-profile',
   templateUrl: './center-profile.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./center-profile.component.css']
 })
 export class CenterProfileComponent implements OnInit {
+  
   centerName?:string
   centerRating?:number
   centerCity?:string;
   cover?:string
   isLoading:Boolean;
+  imageFile!: File;
   coverImage:string;
-  constructor(private imageService:ImageService,config: NgbRatingConfig,private authService:AuthentificationServiceService, private detailService:ProfileDetailsService) {
+
+  url:string | ArrayBuffer | null | undefined;
+  constructor(
+     private modalService: NgbModal,
+     private imageService:ImageService,
+     config: NgbRatingConfig,
+     private authService:AuthentificationServiceService, 
+     private detailService:ProfileDetailsService) 
+     {
     this.isLoading=true;
+    this.url=""
+    
     this.centerName=''
     this.centerCity=''
     this.centerRating=0
@@ -36,6 +50,10 @@ export class CenterProfileComponent implements OnInit {
     this.detailService.getDataListener().subscribe(data=>{
       if(data) this.setHeaderInfo()
     })
+    this.detailService.getHeaderListener().subscribe((data)=>{
+      this.centerName=data[0]
+      this.centerCity=this.detailService.getCityName(+data[1])
+    })
   }
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
@@ -46,7 +64,8 @@ export class CenterProfileComponent implements OnInit {
     this.authService.logOut()
   }
   setHeaderInfo(){
-    let centerCity=localStorage.getItem('city')!
+    
+    let centerCity=this.detailService.getCityName(+localStorage.getItem('city')!)
     let centerName=localStorage.getItem('name')!
     let rating=localStorage.getItem("rating")!
     let cover=localStorage.getItem("cover")!
@@ -62,5 +81,29 @@ export class CenterProfileComponent implements OnInit {
       console.log(this.coverImage)
     }
   }
-
+  openVerticallyCentered(content:any) {
+    this.modalService.open(content, { centered: true });
+  }
+  onFileSelected(event:any){
+   
+    if(event.target.files){
+      this.imageFile=<File>event.target.files[0]
+      var reader=new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload=(event)=>{
+        this.url=event.target?.result
+      }
+    }
+  }
+  uploadImage(){
+    const formData= new FormData()
+    formData.append('image',this.imageFile,this.imageFile.name)
+    this.imageService.uploadCoverImage(formData).subscribe(data=>{
+      console.log('data')
+    },
+      err=>{
+        console.log(err)
+      })
+  }
+  
 }
